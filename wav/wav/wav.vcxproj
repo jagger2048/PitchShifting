@@ -72,8 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Project\Repository\AudioEffect\wav\wav\Library\fftw_32;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Project\Repository\AudioEffect\wav\wav\Library\fftw_32;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Project\Repository\AudioEffect\wav\wav\Library\fftw_32;D:\Project\Repository\AudioEffect\wav\wav;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Project\Repository\AudioEffect\wav\wav;D:\Project\Repository\AudioEffect\wav\wav\Library\fftw_32;$(LibraryPath)</LibraryPath>
+    <ReferencePath>D:\Project\Repository\AudioEffect\wav\wav;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
