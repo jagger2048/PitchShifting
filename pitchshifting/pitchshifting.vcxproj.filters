@@ -21,6 +21,12 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\AudioFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fftw3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
