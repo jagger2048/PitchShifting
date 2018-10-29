@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wav", "wav\wav.vcxproj", "{F67C049B-AC7F-48C9-A87C-C398E417CD63}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pitchshifting", "pitchshifting\pitchshifting.vcxproj", "{F67C049B-AC7F-48C9-A87C-C398E417CD63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

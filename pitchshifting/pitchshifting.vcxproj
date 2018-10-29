@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{F67C049B-AC7F-48C9-A87C-C398E417CD63}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>wav</RootNamespace>
+    <RootNamespace>pitchshifting</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,9 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Repository\AudioEffect\wav\wav\AudioFIle;D:\Repository\AudioEffect\wav\wav\Library\fftw_32;D:\Repository\AudioEffect\wav\wav;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Repository\AudioEffect\wav\wav;D:\Repository\AudioEffect\wav\wav\Library\fftw_32;$(LibraryPath)</LibraryPath>
-    <ReferencePath>D:\Repository\AudioEffect\wav\wav;$(ReferencePath)</ReferencePath>
+    <IncludePath>D:\WorkSpace\Repository\PitchShifting\pitchshifting\AudioFile;D:\WorkSpace\Repository\PitchShifting\pitchshifting\Library\fftw_32;D:\WorkSpace\Repository\PitchShifting\pitchshifting;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\WorkSpace\Repository\PitchShifting\pitchshifting\AudioFile;D:\WorkSpace\Repository\PitchShifting\pitchshifting\Library\fftw_32;$(LibraryPath)</LibraryPath>
+    <ReferencePath>D:\WorkSpace\Repository\PitchShifting\pitchshifting;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -161,7 +161,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="wav.cpp" />
+    <ClCompile Include="pitchshifting.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
