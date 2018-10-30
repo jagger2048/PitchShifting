@@ -72,9 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\WorkSpace\Repository\PitchShifting\pitchshifting;D:\WorkSpace\Repository\PitchShifting\pitchshifting\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\WorkSpace\Repository\PitchShifting\pitchshifting\include;D:\WorkSpace\Repository\PitchShifting\pitchshifting\Library\fftw_32;$(LibraryPath)</LibraryPath>
-    <ReferencePath>D:\WorkSpace\Repository\PitchShifting\pitchshifting\Library\fftw_32;D:\WorkSpace\Repository\PitchShifting\pitchshifting\include;D:\WorkSpace\Repository\PitchShifting\pitchshifting;$(ReferencePath)</ReferencePath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -93,13 +93,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\WorkSpace\Repository\PitchShifting\pitchshifting\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repository\PitchShifting\pitchshifting\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libfftw3-3.lib;libfftw3l-3.lib;libfftw3f-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Repository\PitchShifting\pitchshifting\Library\fftw_32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)Library\fftw_32\*.dll $(SolutionDir)\$(Configuration)\ /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
