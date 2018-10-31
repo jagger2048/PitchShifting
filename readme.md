@@ -329,8 +329,3 @@ of the trade.
 [5]	https://en.wikipedia.org/wiki/Filter_bank#FFT_filter_banks 
 
 [6] https://en.wikipedia.org/wiki/Pitch_(music)#Pitch_and_frequency
-
-## 附录
-
-见压缩包，里边包含完整的测试工程及文件。
-
