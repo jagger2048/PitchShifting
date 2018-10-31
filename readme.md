@@ -16,7 +16,7 @@ v1.0	初步完善pitch shifting的原理介绍及实现方式
 
 - **Pitch Synchronous Overlap and Add ,PSOLA^[3]^ ，基音同步叠加**
 
-  ​	将信号分割成重叠帧***overlap segment***,在叠加前需要确定基音周期以及起始点（Pitch control,一般在**时域处理**），根据需要调整叠加区域的大小，达到升降调的目的，处理后的信号将会改变音调和时长。基音频率及起始点判别的准确与否对处理后的信号是否平稳至关重要。多用于话音信号中。
+  ​	将信号分割成重叠帧 ***overlap segment*** ,在叠加前需要确定基音周期以及起始点（Pitch control,一般在 **时域处理** ），根据需要调整叠加区域的大小，达到升降调的目的，处理后的信号将会改变音调和时长。基音频率及起始点判别的准确与否对处理后的信号是否平稳至关重要。多用于话音信号中。
 
 - **Phase vocoder**
 
@@ -24,7 +24,7 @@ v1.0	初步完善pitch shifting的原理介绍及实现方式
 
 本文将会重点讲解Phase vocoder。
 
-##预备知识
+## 预备知识
 
 ​	在进入下一阶段讲解基于Phase vocoder的Pitch shifting effect之前，先补充一些前置理论：声乐理论。
 
@@ -36,11 +36,11 @@ v1.0	初步完善pitch shifting的原理介绍及实现方式
 
 以下为各个音阶对应的频率：
 
-![1527066610820](assets/1527066610820.png)
+![1527066610820](https://github.com/jagger2048/PitchShifting/blob/master/assets/1527066610820.png)
 
-更多内容请参阅[6].
+更多内容请参阅 [6].
 
-####简单应用：**Time scaling and resampling**
+#### 简单应用：**Time scaling and resampling**
 
 ​	原始信号长度为 L ，采样率为 fs ，要实现升一个半音高(semeton)，可以先将原始信号从 L  插样至 L * 2^1/12^ ,然后以 2^1/12^ *fs 的采样率播放即可升一个半音高。升两个半音高时需要插样的 系数为 2^1/12^，以此类推。对于降调来说对应的系数rate则为 2^1/12^ (one semetone)，最后播放时也需以对应系数的采样率进行播放。
 
@@ -54,11 +54,11 @@ p = audioplayer(y_out,fs*rate);
 p.play
 ```
 
-##Phase Vocoder
+## Phase Vocoder
 
 ### 原理介绍
 
-​	**Vocoder**是一类直接对特定频率信号的幅值和相位进行编辑修改的工具的总称，Phase vocoder属于其中的一种，主要用于调整信号特定频率的相位信息。Phase vocoder有两种实现模型，其中一种是滤波组总和模型(*Filter Bank Summation Model*)，通过一簇等宽、中心频率从0~fs/2的带通滤波器将信号分割成一个个频段的“单频”信号，然后进行处理，最后叠加还原。
+​	**Vocoder** 是一类直接对特定频率信号的幅值和相位进行编辑修改的工具的总称，Phase vocoder属于其中的一种，主要用于调整信号特定频率的相位信息。Phase vocoder有两种实现模型，其中一种是滤波组总和模型(*Filter Bank Summation Model*)，通过一簇等宽、中心频率从0~fs/2的带通滤波器将信号分割成一个个频段的“单频”信号，然后进行处理，最后叠加还原。
 
 ​	另一种为逐块分析/综合模型 (*Block by Block Analysis / Synthesis Model*)，通过逐步步进的方式，重叠地从原始信号中取出 Analysis_block，步进长度为analysis len。之后对Analysis block中的信号进行FFT变换至频域，在频域中对频域信息(幅值、相位)按需求进行处理(Processing)，最后通过IFFT还原频域信号至时域，并进行综合相加(*Synthesis and overlap*)，得出Synthesis block。同样的，综合相加也有步进长度，为Synthesis len。
 
@@ -66,7 +66,7 @@ p.play
 
 
 
-![1526981472041](assets/1526981472041.png)
+![1526981472041](https://github.com/jagger2048/PitchShifting/blob/master/assets/1526981472041.png)
 
 
 ### 实现过程
@@ -231,7 +231,7 @@ x = x + 0.2.*ra';% 下图中为x=x + *ra';
 x = x'/max(x);
 ```
 
-![1527062406650](assets/1527062406650.png)
+![1527062406650](https://github.com/jagger2048/PitchShifting/blob/master/assets/1527062406650.png)
 
 ​	从上图中可以看到使用1kHz，4kHz叠加的正弦信号作为测试信号，pitch shifting 的比例为1.406(约等于2^6/12^)，理论上经过pitch shifting 后1K 与4k分别变成：1000\*1.406 = 1406, 4000*1.406=5624，前后对比可以发现实际处理出来的信号主频十分接近理论频率，由此说明Phase vocoder效果较为理想。
 
@@ -239,7 +239,7 @@ x = x'/max(x);
 
 ​	测试文件为Long Live.wav，使用matlab编写的Phase vocoder进行测试，程序见附录。处理后的文件为 test_matlab.wav。而在Adobe Audition中，使用的设置如下：
 
-![1527069146098](assets/1527069146098.png)
+![1527069146098](https://github.com/jagger2048/PitchShifting/blob/master/assets/1527069146098.png)
 
 处理后的文件为 test_AU.wav，听音测试。
 
